@@ -83,13 +83,11 @@ public class Login extends JFrame implements ActionListener{
         
         getContentPane().setBackground(Color.WHITE);           
         
+// Setting the size of the frame
+// Setting the frame visible, by deafult it is hidden for users.
         setSize(800,480); 
-        // dimensions set ho jate
-        //frame ki length breadth
-        // byDefault user ke visible se hidden rhta
-
-        //by default top left
         setVisible(true);
+// By Default frame opens at Top Left
         setLocation(200,200);
     }
     public void actionPerformed(ActionEvent e){
@@ -103,7 +101,10 @@ public class Login extends JFrame implements ActionListener{
         }
     }
     public static void main(String args[]) {
-        new Login(); //anonymous object of class
-        // object banate se hi constructor call hota hai to code constructor me likhege      
+//   Object of Class
+        new Login();
+//   After creating object, it calls the constructor --> code written in constructor.        
     }
 }
+
+
