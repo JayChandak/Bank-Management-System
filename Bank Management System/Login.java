@@ -84,20 +84,39 @@ public class Login extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.WHITE);           
         
 // Setting the size of the frame
-// Setting the frame visible, by deafult it is hidden for users.
         setSize(800,480); 
-        setVisible(true);
-// By Default frame opens at Top Left
+// By Default frame opens at Top Left       
         setLocation(200,200);
+// Setting the frame visible, by deafult it is hidden for users.
+        setVisible(true);
     }
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == login){
-            
+                Conn connectDB = new Conn();
+            String cardNumber = cardTextField.getText();
+            String pinNumber = pinTextField.getText();
+//            DDL Command
+            String query = "select * from login where cardnumber ='"+cardNumber+"' and pin = '"+pinNumber+"'";        
+            try{
+//                resultSet is an object present in java.sql --> package.
+                ResultSet rs = connectDB.s.executeQuery(query);
+                if(rs.next()){
+                    setVisible(false);
+                    new Transactions(pinNumber).setVisible(true);
+                } else{
+                    JOptionPane.showMessageDialog(null,"Card Number & Password Do Not Match");
+                }
+            }catch(Exception exce){
+                System.out.println(exce);                                
+            }
+        
         }else if(e.getSource() == clear){
             cardTextField.setText("");
             pinTextField.setText("");
         }else if(e.getSource() == signUp){
-            
+                setVisible(false);
+//            object of sign up class
+               new SignUpOne().setVisible(true);
         }
     }
     public static void main(String args[]) {
