@@ -1,0 +1,79 @@
+package bankmanagementsystem;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Transactions extends JFrame implements ActionListener{
+    JButton deposit, withdrawal,fastcash,miniStatement,balance,pinChange,exit;
+    String pinNumber;
+    Transactions(String pinNumber){        
+        setLayout(null); 
+        
+        this.pinNumber = pinNumber;
+        
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/atm.jpg"));
+        Image i2 = i1.getImage().getScaledInstance(800, 800, Image.SCALE_DEFAULT);        
+        ImageIcon i3 = new ImageIcon(i2);        
+        JLabel image = new JLabel(i3);
+        image.setBounds(0,0,800,800);
+        add(image); 
+        
+        JLabel text = new JLabel("Please select your Transaction");
+        text.setBounds(180,250,700,35);
+        text.setForeground(Color.WHITE);
+        text.setFont(new Font("System",Font.BOLD,16));
+        
+        deposit = new JButton("Deposit");
+        deposit.setBounds(150,370,100,25);
+        deposit.addActionListener(this);
+        image.add(deposit);
+        
+        withdrawal= new JButton("Cash Withdrawal");
+        withdrawal.setBounds(320,370,135,25);
+        withdrawal.addActionListener(this);
+        image.add(withdrawal);
+        
+        fastcash= new JButton("Fast Cash");
+        fastcash.setBounds(150,400,100,25);
+        fastcash.addActionListener(this);
+        image.add(fastcash);
+        
+        miniStatement= new JButton("Mini Statement");
+        miniStatement.setBounds(320,400,135,25);
+        miniStatement.addActionListener(this);
+        image.add(miniStatement);
+        
+        pinChange = new JButton("Pin Change");
+        pinChange.setBounds(150,430,100,25);
+        pinChange.addActionListener(this);
+        image.add(pinChange);
+        
+        balance = new JButton("Balance Enquiry");
+        balance.setBounds(320,430,135,25);
+        balance.addActionListener(this);
+        image.add(balance);
+        
+        exit = new JButton("Exit");
+        exit.setBounds(320,460,135,25);
+        exit.addActionListener(this);
+        image.add(exit);
+        
+//        add on frame, but image hides 
+//        add(text);
+        image.add(text);
+        
+        setSize(800,800);
+        setLocation(300,0);
+        setUndecorated(true);
+//      Always setVisible line should be at end.
+        setVisible(true);        
+    }
+    public void actionPerformed(ActionEvent ae){
+        if(ae.getSource() == exit){
+            System.exit(0);
+        }
+    }
+    public static void main(String args[]) {
+        new Transactions("");
+    }
+}
