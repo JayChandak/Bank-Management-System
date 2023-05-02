@@ -1,0 +1,217 @@
+package bankmanagementsystem;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+
+public class SignUp3 extends JFrame implements ActionListener{
+    JRadioButton r1,r2,r3,r4;
+    JCheckBox c1,c2,c3,c4,c5,c6,c7;
+    JButton submit,cancel;
+    String formno;
+    
+    SignUp3(String formno){
+    
+        this.formno = formno;
+        
+        setLayout(null);
+        setTitle("Page 3 - Account Details");
+        
+        JLabel l1 = new JLabel("Page 3 : Account Details");
+        l1.setFont(new Font("Raleway",Font.BOLD,20));
+        l1.setBounds(190,30,400,40);
+        add(l1);
+        
+        JLabel type = new JLabel("Account Type");
+        type.setFont(new Font("Raleway",Font.BOLD,18));
+        type.setBounds(60,80,150,30);
+        add(type);
+        
+        r1 = new JRadioButton(" Savings Account ");
+        r1.setFont(new Font("Raleway",Font.BOLD,15));      
+        r1.setBackground(Color.white);
+        r1.setBounds(80,110,230,40);        
+        add(r1);
+        
+        r2 = new JRadioButton(" Current Account ");
+        r2.setFont(new Font("Raleway",Font.BOLD,15));      
+        r2.setBackground(Color.white);
+        r2.setBounds(340,110,250,40);        
+        add(r2);
+        
+        r3 = new JRadioButton(" Fixed Deposit Account ");
+        r3.setFont(new Font("Raleway",Font.BOLD,15));      
+        r3.setBackground(Color.white);
+        r3.setBounds(80,150,230,40);        
+        add(r3);
+        
+        r4 = new JRadioButton(" Recurring Deposit Account ");
+        r4.setFont(new Font("Raleway",Font.BOLD,15));      
+        r4.setBackground(Color.white);
+        r4.setBounds(340,150,250,40);        
+        add(r4);
+         
+        ButtonGroup groupAccount = new ButtonGroup();
+        groupAccount.add(r1);
+        groupAccount.add(r2);
+        groupAccount.add(r3);
+        groupAccount.add(r4);
+
+        JLabel card = new JLabel("Card Number");
+        card.setFont(new Font("Raleway",Font.BOLD,18));
+        card.setBounds(60,190,230,30);
+        add(card);
+        
+        JLabel n = new JLabel("16 Digit Card Number");
+        n.setFont(new Font("Raleway",Font.BOLD,13));
+        n.setBounds(60,215,230,20);
+        add(n);
+              
+        JLabel number = new JLabel("XXXX - XXXX - XXXX - 4184");
+        number.setFont(new Font("Raleway",Font.BOLD,18));
+        number.setBounds(300,190,250,40);
+        add(number);
+
+        JLabel pin = new JLabel("Pin Number");
+        pin.setFont(new Font("Raleway",Font.BOLD,18));
+        pin.setBounds(60,250,230,30);
+        add(pin);
+        
+        JLabel p = new JLabel("Password");
+        p.setFont(new Font("Raleway",Font.BOLD,13));
+        p.setBounds(60,275,230,20);
+        add(p);
+        
+        JLabel pnumber = new JLabel("XXXX");
+        pnumber.setFont(new Font("Raleway",Font.BOLD,18));
+        pnumber.setBounds(300,245,60,40);
+        add(pnumber);
+        
+        JLabel services = new JLabel("Services Required: ");
+        services.setFont(new Font("Raleway",Font.BOLD,18));
+        services.setBounds(60,300,230,20);
+        add(services);
+        
+        c1 = new JCheckBox("Passbook");
+        c1.setBackground(Color.white);
+        c1.setFont(new Font("Raleway",Font.BOLD,15));
+        c1.setBounds(60,330,200,30);
+        add(c1);
+        
+        c2 = new JCheckBox("Cheque Book");
+        c2.setBackground(Color.white);
+        c2.setFont(new Font("Raleway",Font.BOLD,15));
+        c2.setBounds(300,330,200,30);
+        add(c2);
+        
+        c3 = new JCheckBox("Debit Card");
+        c3.setBackground(Color.white);
+        c3.setFont(new Font("Raleway",Font.BOLD,15));
+        c3.setBounds(60,360,200,30);
+        add(c3);
+        
+        c4 = new JCheckBox("Mini Statement");
+        c4.setBackground(Color.white);
+        c4.setFont(new Font("Raleway",Font.BOLD,15));
+        c4.setBounds(300,360,200,30);
+        add(c4);
+                
+        c5 = new JCheckBox("Mobile Banking");
+        c5.setBackground(Color.white);
+        c5.setFont(new Font("Raleway",Font.BOLD,15));
+        c5.setBounds(60,390,200,30);
+        add(c5);
+        
+        c6 = new JCheckBox("Email & SMS Alerts");
+        c6.setBackground(Color.white);
+        c6.setFont(new Font("Raleway",Font.BOLD,15));
+        c6.setBounds(300,390,200,30);
+        add(c6);
+        
+        c7 = new JCheckBox("I hereby declares that the above entered details are correct to the best of knowledge");
+        c7.setBackground(Color.white);
+        c7.setFont(new Font("Raleway",Font.BOLD,12));
+        c7.setBounds(60,450,520,30);
+        add(c7);
+        
+        submit = new JButton("Submit");
+        submit.setBackground(Color.BLACK);
+        submit.setForeground(Color.WHITE);
+        submit.setFont(new Font("Raleway",Font.BOLD,20));
+        submit.setBounds(180,500,100,30);
+        submit.addActionListener(this);
+        add(submit);
+        
+        cancel = new JButton("Cancel");
+        cancel.setBackground(Color.BLACK);
+        cancel.setForeground(Color.WHITE);
+        cancel.setFont(new Font("Raleway",Font.BOLD,20));
+        cancel.setBounds(330,500,100,30);
+        cancel.addActionListener(this);
+        add(cancel);
+        
+        getContentPane().setBackground(Color.WHITE);                   
+        setSize(650,620);
+        setLocation(350,30);
+        setVisible(true);
+    }
+    
+    public void actionPerformed(ActionEvent ae){
+        if(ae.getSource() == submit){
+            
+            String accountType = null;
+            if(r1.isSelected()){
+                accountType = "Saving Account";
+            }else if(r2.isSelected()){
+                accountType = "Current Account";
+            }else if(r3.isSelected()){
+                accountType = "Fixed Deposit Account";
+            }else if(r4.isSelected()){
+                accountType = "Recurring Deposit Account";
+            }
+            
+            Random random = new Random();
+            String cardNumber = "" + Math.abs((random.nextLong() % 90000000L) + 5040936000000000L);
+            
+            String pinNumber = "" + Math.abs((random.nextLong() % 9000L) + 1000L);
+            
+            String facility = "";
+            if(c1.isSelected()){
+//                mulitple options so concate karge 
+                facility = facility + " Passbook";
+            }else if(c2.isSelected()){
+                facility = facility + " Cheque Book";
+            }else if(c3.isSelected()){
+                facility = facility +  " Debit Card";
+            }else if(c4.isSelected()){
+                facility = facility + " Mini Statement";
+            }else if(c5.isSelected()){
+                facility = facility + " Mobile Banking";
+            }else if(c6.isSelected()){
+                facility = facility + " Email & SMS Alerts";
+            }                       
+            try{
+                if(accountType.equals("")){
+                    JOptionPane.showMessageDialog(null,"Fill all the details");
+                }else{
+                    Conn connection = new Conn();
+                    String query1 = "insert into signupthree values('"+formno+"','"+accountType+"','"+cardNumber+"','"+pinNumber+"','"+facility+"')";
+                    String query2 = "insert into login values('"+formno+"','"+cardNumber+"','"+pinNumber+"')";
+                    
+                    connection.s.executeUpdate(query1);
+                    connection.s.executeUpdate(query2);
+                    
+                    JOptionPane.showMessageDialog(null,"Card Number: " + cardNumber + "\n Pin: " + pinNumber);
+                    
+                }
+            }catch(Exception e){
+                System.out.println(e);
+            }            
+        }else if(ae.getSource() == cancel){
+            
+        }
+    }
+    public static void main(String args[]) {        
+        new SignUp3("");
+    }
+}
